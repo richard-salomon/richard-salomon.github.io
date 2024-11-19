@@ -76,9 +76,8 @@
     <input type="text" id="dinner" name="dinner"><br><br>
     <label for="additional-snacks">Additional Snacks:</label>
     <textarea id="additional-snacks" name="additional-snacks"></textarea><br><br>
-    <button id="add-meal-button">Add Additional Meal</button>
+    <button id="submit-button">Submit</button>
     <div id="additional-meals"></div>
-    <input type="submit" value="Export to CSV">
   </form>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.3.1/papaparse.min.js"></script>
@@ -120,7 +119,7 @@
       document.body.appendChild(completionScreen);
     });
 
-    const addMealButton = document.getElementById('add-meal-button');
+    const addMealButton = document.getElementById('submit-button');
     addMealButton.addEventListener('click', () => {
       const newMealDiv = document.createElement('div');
       newMealDiv.innerHTML = 
