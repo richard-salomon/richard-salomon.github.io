@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Tracker - Log Meals</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Food Tracker</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="form.html" class="active">Start Tracking</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <form id="food-form" class="food-form">
+            <h1>Daily Food Log</h1>
+            
+            <div class="form-group">
+                <label for="user-id">User ID:</label>
+                <input type="text" id="user-id" name="user-id" required>
+            </div>
+
+            <div class="form-group">
+                <label for="breakfast">Breakfast:</label>
+                <input type="text" id="breakfast" name="breakfast" placeholder="What did you have for breakfast?">
+            </div>
+
+            <div class="form-group">
+                <label for="lunch">Lunch:</label>
+                <input type="text" id="lunch" name="lunch" placeholder="What did you have for lunch?">
+            </div>
+
+            <div class="form-group">
+                <label for="dinner">Dinner:</label>
+                <input type="text" id="dinner" name="dinner" placeholder="What did you have for dinner?">
+            </div>
+
+            <div class="form-group">
+                <label for="snacks">Snacks:</label>
+                <textarea id="snacks" name="snacks" placeholder="List any snacks..."></textarea>
+            </div>
+
+            <div id="additional-meals"></div>
+
+            <div class="button-group">
+                <button type="button" id="add-meal-button" class="secondary-button">Add Another Meal</button>
+                <button type="submit" class="primary-button">Submit Food Log</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Food Tracker</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.3.1/papaparse.min.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>

@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Food Tracker</title>
-  <link rel="stylesheet" href="styles.css">
+    <title>Food Tracker - Welcome</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Food Tracker</h1>
-  <div id="content"></div>
-  <button id="load-form-button">Load Form</button>
-  <script src="script.js"></script>
+    <nav class="navbar">
+        <div class="nav-brand">Food Tracker</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="form.html">Start Tracking</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="hero">
+            <h1>Track Your Daily Meals</h1>
+            <p>Monitor your eating habits and maintain a healthy lifestyle with our simple food tracking system.</p>
+            <a href="form.html" class="cta-button">Start Tracking Now</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Easy to Use</h3>
+                <p>Simple form to log your daily meals</p>
+            </div>
+            <div class="feature-card">
+                <h3>Download Data</h3>
+                <p>Export your food log as CSV</p>
+            </div>
+            <div class="feature-card">
+                <h3>Track Progress</h3>
+                <p>Monitor your eating patterns</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Food Tracker</p>
+    </footer>
 </body>
 </html>
