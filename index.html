@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Tracker</title>
+  <style>
+    body {
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0069d9;
+    }
+
+    form > * {
+      margin-bottom: 20px;
+    }
+
+    form.is-submitted {
+      opacity: 0.5;
+    }
+
+    form.is-submitted input[type="submit"] {
+      opacity: 1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="container">
+  <h1>Food Tracker</h1>
+  <form id="food-form">
+    <label for="user-id">User ID:</label>
+    <input type="text" id="user-id" name="user-id"><br><br>
+    <label for="breakfast">Breakfast:</label>
+    <input type="text" id="breakfast" name="breakfast"><br><br>
+    <label for="snack-1">Snack 1:</label>
+    <input type="text" id="snack-1" name="snack-1"><br><br>
+    <label for="lunch">Lunch:</label>
+    <input type="text" id="lunch" name="lunch"><br><br>
+    <label for="dinner">Dinner:</label>
+    <input type="text" id="dinner" name="dinner"><br><br>
+    <label for="additional-snacks">Additional Snacks:</label>
+    <textarea id="additional-snacks" name="additional-snacks"></textarea><br><br>
+    <button id="add-meal-button">Add Additional Meal</button>
+    <div id="additional-meals"></div>
+    <input type="submit" value="Export to CSV">
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.3.1/papaparse.min.js"></script>
+  <script>
+    const form = document.getElementById('food-form');
+    const csvData = [];
+    const additionalMealsDiv = document.getElementById('additional-meals');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const userData = {};
+
+      formData.forEach((value, key) => {
+        userData[key] = value;
+      });
+
+      csvData.push(userData);
+
+      const csv = Papa.unparse(csvData, {
+        append: true,
+      });
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'food-tracker.csv';
+      a.click();
+
+      URL.revokeObjectURL(url);
+
+      // Add completion screen
+      const completionScreen = document.createElement('div');
+      completionScreen.innerHTML = `
+        <h2>Thank you for completing the food tracker!</h2>
+        <p>The current date is: ${new Date().toLocaleDateString()}</p>
+      `;
+      document.body.appendChild(completionScreen);
+    });
+
+    const addMealButton = document.getElementById('add-meal-button');
+    addMealButton.addEventListener('click', () => {
+      const newMealDiv = document.createElement('div');
+      newMealDiv.innerHTML = 
+        <label for="meal-${csvData.length + 1}">Meal ${csvData.length + 1}:</label>
+        <input type="text" id="meal-${csvData.length + 1}" name="meal-${csvData.length + 1}">
+      ;
+      additionalMealsDiv.appendChild(newMealDiv);
+    });
+  </script>
+</body>
+</html>
