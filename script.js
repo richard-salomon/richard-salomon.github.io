@@ -40,3 +40,7 @@ document.getElementById('submit-button').addEventListener('click', () => {
 document.getElementById('results-button').addEventListener('click', () => {
   loadResultsPage();
 });
+
+document.getElementById('load-form-button').addEventListener('click', () => {
+  loadFoodTrackerPage();
+});
